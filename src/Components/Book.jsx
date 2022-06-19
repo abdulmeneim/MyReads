@@ -1,0 +1,44 @@
+import { React, useEffect } from 'react'
+import * as api from "../BooksAPI"
+
+
+export default function Book(props) {
+    useEffect(() => {
+    }, [])
+    let Change = (e) => {
+        // console.log(e.target.value);
+        props.onChangeStauts({ newstatus: e.target.value, title: props.title, id: props.id })
+    }
+    return (
+        <>
+            <li>
+                <div className="book">
+                    <div className="book-top">
+                        <div
+                            className="book-cover"
+                            style={{
+                                width: 128,
+                                height: 193,
+                                backgroundImage:
+                                    `url(${props.link})`,
+                            }}
+                        ></div>
+                        <div className="book-shelf-changer">
+                            <select onChange={Change}>
+                                <option value="none" disabled>
+                                    Move to...
+                                </option>
+                                <option selected={props.status === "currentlyReading"} value="currentlyReading">Currently Reading</option>
+                                <option selected={props.status === "wantToRead"} value="wantToRead">Want to Read</option>
+                                <option selected={props.status === "read"} value="read">Read</option>
+                                {/* <option value="none">None</option> */}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="book-title">{props.title}</div>
+                    <div className="book-authors">{props.author}</div>
+                </div>
+            </li>
+        </>
+    )
+}
