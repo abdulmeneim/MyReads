@@ -7,34 +7,31 @@ import Book from './Book'
 export default function Search(props) {
     let [allbooks, setSearchBooks] = useState([])
     let [query, setquery] = useState("")
-    let setq = (e) => {
-        if (e.target.value !== "") {
-            console.log(e.target.value.toLowerCase());
+    let setq = async (e) => {
+        console.log("fired", e.target.value, e.target.value.length >= 1);
+        if (e.target.value.length >= 1) {
             setquery(e.target.value)
-        } else {
-            console.log(e.target.value.toLowerCase(), "empty");
-            setquery("")
-            setSearchBooks([])
-        }
-    }
-    let serch = async (e) => {
-        if (!(query === "" || query === null)) {
-
-            let res = await api.search(query.trim(), 20)
-            if (!res.error) {
-                console.log(res);
+            let res = await api.search(e.target.value, 20)
+            if (res.length > 0) {
                 setSearchBooks(res)
             }
         }
+        else {
+            setquery("")
+            setTimeout(() => {
+                setSearchBooks([])
+            }, 500);
+        }
     }
+
 
 
 
 
     let handelChange = props.onchange
     useEffect(() => {
-        serch()
-    }, [query])
+        console.log(allbooks);
+    }, [allbooks])
     return (
         <>
             <div className="search-books">
