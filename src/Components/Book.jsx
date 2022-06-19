@@ -5,7 +5,7 @@ export default function Book(props) {
     useEffect(() => {
     }, [])
     let Change = (e) => {
-        // console.log(e.target.value);
+        console.log(e.target.value);
         props.onChangeStauts({ newstatus: e.target.value, title: props.title, id: props.id, book: props.book })
     }
     return (
@@ -23,14 +23,14 @@ export default function Book(props) {
                             }}
                         ></div>
                         <div className="book-shelf-changer">
-                            <select onChange={Change}>
-                                <option value="none" disabled>
+                            <select onChange={Change} value={props.status}>
+                                <option value="dis" disabled>
                                     Move to...
                                 </option>
-                                <option selected={props.status === "currentlyReading"} value="currentlyReading">Currently Reading</option>
-                                <option selected={props.status === "wantToRead"} value="wantToRead">Want to Read</option>
-                                <option selected={props.status === "read"} value="read">Read</option>
-                                <option selected={props.status === "none"} value="none">None</option>
+                                <option value="currentlyReading">Currently Reading</option>
+                                <option value="wantToRead">Want to Read</option>
+                                <option value="read">Read</option>
+                                <option value="none">None</option>
                             </select>
                         </div>
                     </div>
