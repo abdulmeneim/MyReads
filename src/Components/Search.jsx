@@ -12,14 +12,15 @@ export default function Search(props) {
             console.log(e.target.value.toLowerCase());
             setquery(e.target.value)
         } else {
+            console.log(e.target.value.toLowerCase(), "empty");
             setquery("")
+            setSearchBooks([])
         }
     }
     let serch = async (e) => {
         if (!(query === "" || query === null)) {
 
             let res = await api.search(query.trim(), 20)
-            console.log(res, query, "asdasd");
             if (!res.error) {
                 console.log(res);
                 setSearchBooks(res)
@@ -32,7 +33,6 @@ export default function Search(props) {
 
     let handelChange = props.onchange
     useEffect(() => {
-        console.log(allbooks);
         serch()
     }, [query])
     return (
@@ -61,10 +61,9 @@ export default function Search(props) {
                             allbooks.map((book, index) => {
                                 let found = props.books.find((mybook, i) => { return mybook.id === book.id })
                                 if (found) {
-                                    console.log("found", found);
                                     book.shelf = found.shelf
                                 }
-                                return < Book id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks?.thumbnail} author={book.authors?.[0]} ></Book>
+                                return < Book id={book.id} status={book.shelf ? book.shelf : "none"} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks?.thumbnail} author={book.authors?.[0]} ></Book>
                             })
                         }
 

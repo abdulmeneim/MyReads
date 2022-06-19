@@ -31,7 +31,7 @@ export default function Book(props) {
                                 <option selected={props.status === "currentlyReading"} value="currentlyReading">Currently Reading</option>
                                 <option selected={props.status === "wantToRead"} value="wantToRead">Want to Read</option>
                                 <option selected={props.status === "read"} value="read">Read</option>
-                                {/* <option value="none">None</option> */}
+                                <option selected={props.status === "none"} value="none">None</option>
                             </select>
                         </div>
                     </div>
