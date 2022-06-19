@@ -21,7 +21,7 @@ export default function MyReads(props) {
                         <BookShelf title="Currently Reading">
                             {books.map((book, index) =>
                                 book.shelf === "currentlyReading" ?
-                                    <Book id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks.thumbnail} author={book.authors[0]}></Book>
+                                    <Book book={book} id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks.thumbnail} author={book.authors[0]}></Book>
                                     :
                                     ""
                             )}
@@ -30,7 +30,7 @@ export default function MyReads(props) {
                         <BookShelf title="Want to Read">
                             {books.map((book, index) =>
                                 book.shelf === "wantToRead" ?
-                                    <Book id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks.thumbnail} author={book.authors[0]}></Book>
+                                    <Book book={book} id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks.thumbnail} author={book.authors[0]}></Book>
                                     :
                                     ""
                             )}
@@ -39,7 +39,7 @@ export default function MyReads(props) {
 
                             {books.map((book, index) =>
                                 book.shelf === "read" ?
-                                    <Book id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks.thumbnail} author={book.authors[0]}></Book>
+                                    <Book book={book} id={book.id} status={book.shelf} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks.thumbnail} author={book.authors[0]}></Book>
                                     :
                                     ""
                             )}

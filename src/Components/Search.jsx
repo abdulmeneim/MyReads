@@ -63,7 +63,7 @@ export default function Search(props) {
                                 if (found) {
                                     book.shelf = found.shelf
                                 }
-                                return < Book id={book.id} status={book.shelf ? book.shelf : "none"} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks?.thumbnail} author={book.authors?.[0]} ></Book>
+                                return < Book id={book.id} status={book.shelf ? book.shelf : "none"} book={book} onChangeStauts={handelChange} key={index} title={book.title} link={book.imageLinks?.thumbnail} author={book.authors?.[0]} ></Book>
                             })
                         }
 

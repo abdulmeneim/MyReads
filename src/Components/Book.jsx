@@ -1,5 +1,4 @@
 import { React, useEffect } from 'react'
-import * as api from "../BooksAPI"
 
 
 export default function Book(props) {
@@ -7,7 +6,7 @@ export default function Book(props) {
     }, [])
     let Change = (e) => {
         // console.log(e.target.value);
-        props.onChangeStauts({ newstatus: e.target.value, title: props.title, id: props.id })
+        props.onChangeStauts({ newstatus: e.target.value, title: props.title, id: props.id, book: props.book })
     }
     return (
         <>

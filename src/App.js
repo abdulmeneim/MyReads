@@ -16,7 +16,7 @@ function App() {
 
 
   ]);
-  let getallbooks = async () => {
+  let getAllbooks = async () => {
     let apiBooks = await api.getAll()
     console.log(apiBooks);
     setBooks([...apiBooks])
@@ -27,11 +27,13 @@ function App() {
     // theBook.shelf = data.newstatus
     // setBooks([...books])
     console.log(data);
-    await api.update({ id: data.id }, data.newstatus)
-    getallbooks()
+    data.book.shelf = data.newstatus
+    await api.update(data.book, data.newstatus)
+    setBooks([...books.filter((b) => b.id !== data.book.id), data.book]);
+
   }
   useEffect(() => {
-    getallbooks()
+    getAllbooks()
   }, [])
   return (
     <div className="app">
